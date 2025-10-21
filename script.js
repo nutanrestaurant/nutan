@@ -89,3 +89,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+
+// contact form section
+// Initialize EmailJS when the document is ready
+document.addEventListener("DOMContentLoaded", () => {
+  emailjs.init("IXNlHgaLvzUZ9KsRk"); // Replace with your actual public key
+
+  const form = document.querySelector("form");
+  if (!form) return; // safety check
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = form.querySelector('input[placeholder="Your Name"]').value;
+    const email = form.querySelector('input[placeholder="Your Email"]').value;
+    const subject = form.querySelector('input[placeholder="Subject"]').value;
+    const message = form.querySelector("textarea").value;
+
+    emailjs
+      .send("service_y667ne7", "template_6p91dqt", {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message,
+      })
+      .then(() => {
+        alert("✅ Message sent successfully!");
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Email send error:", error);
+        alert("❌ Failed to send message. Try again later.");
+      });
+  });
+});
