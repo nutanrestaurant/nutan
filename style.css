@@ -255,6 +255,7 @@ nav a:hover {
   text-align: center;
   background: #f9e7e7;
   padding: 100px 10%;
+  padding-bottom: 5%;
   border-radius: 10px;
 }
 
@@ -697,18 +698,6 @@ a:focus { outline: 3px solid rgba(107,45,45,0.18); outline-offset: 2px; }
   font-weight: 700;
 }
 
-/* Ensure header text is always visible - allow wrapping if needed and adjust height via JS */
-.brand, .brand-name { min-width: 0; }
-
-/* ==============================
-   2.2 Header Right / CTA
-   ============================== */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 
 /* ==============================
    3. Drawer (Sidebar) & Overlay
@@ -769,7 +758,7 @@ a:focus { outline: 3px solid rgba(107,45,45,0.18); outline-offset: 2px; }
 /* small screens — stack and make header compact */
 @media (max-width: 768px) {
   .container { padding: 14px; }
-  .brand-logo { height: 36px; width: 36px; }
+  .brand-logo { height: 40px; width: auto; }
   .brand-name { font-size: 16px; }
   .btn-cta { display: none; }
   .drawer { width: 260px; }
@@ -777,8 +766,8 @@ a:focus { outline: 3px solid rgba(107,45,45,0.18); outline-offset: 2px; }
 
 /* extra small — ensure items wrap nicely */
 @media (max-width: 420px) {
-  .brand-name { font-size: 14px; white-space: normal; }
-  .site-header { padding: 10px; }
+  .brand-name { font-size: 20px; white-space: normal; }
+  .site-header { padding: 10px;}
 }
 
 /* ensure focus states are visible */

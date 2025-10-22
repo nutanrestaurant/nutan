@@ -1,0 +1,668 @@
+/* ---------- ROOT COLORS ---------- */
+:root {
+  --primary: #6B2D2D;
+  --accent: #D13C3C;
+  --bg: #FFF7F0; /* Not replaced, as it's the main background color */
+  --text-dark: #2C2C2C;
+  --text-light: #fff; /* Not replaced, as it's a specific variable name */
+  --card-radius: 12px;
+  --header-height: 85%;
+  --transition: 0.28s ease;
+}
+
+/* ---------- GLOBAL STYLES ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 20px;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+section {
+  padding: 60px 10%;
+}
+
+h2 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+p {
+  margin-bottom: 15px;
+}
+/* --- Hamburger & Drawer Styles (NEW ADDITIONS) --- */
+
+/* Header left container for logo + toggle */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Hamburger Menu Toggle Button */
+.menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform var(--transition);
+    z-index: 1001;
+}
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger -> X transformation */
+.menu-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0.2); }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* Drawer Close Button */
+.drawer-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+}
+.drawer-close:hover {
+    color: var(--accent);
+}
+
+/* Drawer (Sidebar) */
+.drawer {
+    --drawer-width: 280px; /* Define width here */
+    position: fixed;
+    top: 0;
+    left: calc(-1 * var(--drawer-width)); /* Start off-screen */
+    height: 100%;
+    width: var(--drawer-width);
+    max-width: 85%;
+    background-color: var(--primary);
+    color: #fff;
+    padding: 20px;
+    padding-top: 80px; /* Space for the close button */
+    transition: left 0.32s cubic-bezier(.2,.9,.2,1);
+    z-index: 1250;
+    overflow-y: auto;
+    box-shadow: 6px 0 18px rgba(0,0,0,0.3);
+}
+.drawer.open { left: 0; }
+
+.drawer nav a {
+    display: block;
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: 500;
+}
+.drawer nav a:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateX(5px);
+}
+
+/* Overlay */
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1240;
+}
+.drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- Responsive (Update existing @media) --- */
+
+@media (max-width: 768px) {
+
+    /* Modify existing header rule */
+    header {
+      /* Replaces flex-direction: column; text-align: center; */
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+      padding: 10px 5%;
+    }
+    /* Hide the desktop navigation */
+    .desktop-nav {
+      display: none;
+    }
+
+    /* Show the hamburger menu toggle */
+    .menu-toggle {
+      display: inline-flex;
+    }
+
+    /* Ensure old nav styling is ignored for drawer */
+    nav ul {
+        display: none;
+    }
+
+    .restaurant,
+    .banquet {
+      flex-direction: column;
+    }
+
+    .footer-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+}
+/* ---------- HEADER / NAVBAR ---------- */
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary);
+  color: var(--text-light);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10%;
+  transition: 0.3s ease;
+}
+
+/* Logo with Text */
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #faf2e5;
+}
+
+header .logo img {
+  height: 55px;
+  width: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+header .logo img:hover {
+  transform: scale(1.05);
+}
+
+header .logo-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #faf2e5;
+  transition: color 0.3s ease;
+}
+
+header .logo:hover .logo-text {
+  color: var(--accent);
+}
+
+/* Navbar Links */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #faf2e5;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ---------- HERO SECTION ---------- */
+.hero {
+  text-align: center;
+  background-color: #f8e9e9;
+  color: #6B2D2D;
+  padding: 120px 10%;
+  padding-bottom: 1.5%;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #2C2C2C;
+}
+@media(max-width: 786px){
+  .hero{
+    padding-top: 100px;
+    padding-bottom: 20px;
+  }
+  .hero h1{
+    font-size: 2.0rem;
+  }
+  .hero p{
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 0%;
+    font-size: 20px;
+  }
+}
+
+/* ---------- DISHES GRID ---------- */
+.dishes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 60px 10%;
+}
+
+.dish-card {
+  background-color: #faf2e5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dish-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dish-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.dish-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.dish-info h3 {
+  font-size: 1.3rem;
+  color: #6B2D2D;
+  margin-bottom: 10px;
+}
+
+.dish-info p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.price {
+  display: inline-block;
+  background-color: #6B2D2D;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+/* ---------- FOOTER SECTION ---------- */
+.main-footer {
+  background-color: var(--primary);
+  color: #faf2e5;
+  padding: 50px 10% 30px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 30px;
+}
+
+/* Left Section (Logo) */
+.footer-logo {
+  text-align: center;
+}
+
+.footer-logo img {
+  width: 130px;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 10px;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo img:hover {
+  transform: scale(1.05);
+}
+
+.footer-logo .tagline {
+  font-size: 1rem;
+  color: #faf2e5;
+  letter-spacing: 0.5px;
+}
+
+/* Middle Section (Menu) */
+.footer-menu h3 {
+  margin-bottom: 15px;
+  color: #faf2e5;
+  text-transform: uppercase;
+}
+
+.footer-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-menu li {
+  margin: 8px 0;
+}
+
+.footer-menu a {
+  color: #faf2e5;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-menu a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Right Section (Contact Info) */
+.footer-contact h3 {
+  margin-bottom: 15px;
+  color: #faf2e5;
+  text-transform: uppercase;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  color: #faf2e5;
+}
+
+.footer-contact a {
+  color: #faf2e5;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-contact a:hover {
+  color: var(--accent);
+}
+
+/* Bottom Row */
+.footer-bottom {
+  text-align: center;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: #f8e9e9;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.social {
+  color: #faf2e5;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.social:hover {
+  transform: scale(1.2);
+}
+
+.facebook:hover { color: #1877f2; }
+.instagram:hover { color: #e4405f; }
+.linkedin:hover { color: #0077b5; }
+.pinterest:hover { color: #bd081c; }
+.whatsapp:hover { color: #25d366; }
+
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  header {
+    text-align: center;
+    gap: 10px;
+  }
+
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px;
+}
+
+/* link resets */
+a { color: inherit; text-decoration: none; }
+/* Outline uses transparent version of primary */
+a:focus { outline: 3px solid rgba(107,45,45,0.18); outline-offset: 2px; }
+
+/* ==============================
+   2. Header
+   ============================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 18px;
+  /* SOLID Primary color for header background */
+  background: var(--primary);
+  color: var(--text-light);
+  z-index: 1200;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+/* header left block (hamburger + brand) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* ==============================
+   2.1 Brand & Hamburger
+   ============================== */
+
+/* Hamburger - three lines */
+.menu-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  transition: transform var(--transition);
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--text-light);
+  border-radius: 2px;
+  transform-origin: center;
+  transition: all var(--transition);
+}
+
+/* Hamburger -> X when open */
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-light);
+}
+.brand-logo {
+  height: 70px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.06);
+  padding: 4px;
+}
+.brand-name {
+  font-size: 35px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+/* Ensure header text is always visible - allow wrapping if needed and adjust height via JS */
+.brand, .brand-name { min-width: 0; }
+
+/* ==============================
+   2.2 Header Right / CTA
+   ============================== */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+/* ==============================
+   3. Drawer (Sidebar) & Overlay
+   ============================== */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: -300px; /* hidden by default */
+  height: 100%;
+  width: 300px;
+  max-width: 83%;
+  /* SOLID Primary color for drawer background */
+  background: var(--primary);
+  color: var(--text-light);
+  padding: 24px;
+  transition: left 0.32s cubic-bezier(.2,.9,.2,1);
+  z-index: 1250;
+  overflow-y: auto;
+  box-shadow: 6px 0 18px rgba(0,0,0,0.16);
+}
+.drawer.open { left: 0; }
+
+.drawer nav a {
+  display: block;
+  margin: 14px 0;
+  font-size: 25px;
+  color: var(--text-light);
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: background var(--transition), transform var(--transition);
+}
+.drawer nav a:hover {
+  /* Hover effect remains a slight white tint */
+  background: #D13C3C;
+  transform: translateX(6px);
+}
+
+/* overlay that fades in when drawer open */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.42);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  z-index: 1240;
+}
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* ==============================
+   4. Responsive Adjustments
+   ============================== */
+
+/* small screens — stack and make header compact */
+@media (max-width: 768px) {
+  .container { padding: 14px; }
+  .brand-logo { height: 40px; width: auto; }
+  .brand-name { font-size: 16px; }
+  .btn-cta { display: none; }
+  .drawer { width: 260px; }
+}
+
+/* extra small — ensure items wrap nicely */
+@media (max-width: 420px) {
+  .brand-name { font-size: 20px; white-space: normal; }
+  .site-header { padding: 10px;}
+}
+
+/* ensure focus states are visible */
+button:focus, a:focus { outline: 3px solid rgba(107,45,45,0.18); outline-offset: 2px; border-radius: 8px; }
