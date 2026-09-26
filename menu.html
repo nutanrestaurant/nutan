@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Menu — Nutan Restaurant</title>
+<meta name="description" content="Browse the complete Nutan Restaurant menu — Punjabi, Chinese &amp; Continental pure vegetarian dishes, soups, starters, breads, rice, desserts and combo meals.">
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+
+<div class="page-loader"><div class="loader-mark"></div></div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="images/logo.jpg" alt="Nutan Restaurant logo" class="brand-logo">
+      <span class="brand-name">Nutan Restaurant<small>Ahmedabad</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="dishes.html">Popular Dishes</a>
+      <a href="meals.html">Best Sellers</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-outline btn-sm" data-open-order type="button"><i class="fas fa-bag-shopping"></i> Order Online</button>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer">
+  <button class="drawer-close" aria-label="Close menu" type="button"><i class="fas fa-xmark"></i></button>
+  <nav aria-label="Mobile navigation">
+    <a href="index.html">Home <i class="fas fa-arrow-right"></i></a>
+    <a href="menu.html">Menu <i class="fas fa-arrow-right"></i></a>
+    <a href="dishes.html">Popular Dishes <i class="fas fa-arrow-right"></i></a>
+    <a href="meals.html">Best Sellers <i class="fas fa-arrow-right"></i></a>
+    <a href="index.html#about">About <i class="fas fa-arrow-right"></i></a>
+    <a href="index.html#contact">Contact <i class="fas fa-arrow-right"></i></a>
+  </nav>
+  <div class="drawer-social">
+    <a href="https://www.instagram.com/nutanrestaurant/" class="social instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/919408547530" class="social whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:+919408547530" class="social" aria-label="Call"><i class="fas fa-phone"></i></a>
+  </div>
+</div>
+<div class="drawer-overlay"></div>
+
+<!-- ================= PAGE HERO ================= -->
+<section class="page-hero">
+  <div class="hero-media"><img src="images/paneer-tikka-masala.jpg" alt="Nutan Restaurant menu spread"></div>
+  <div class="container page-hero-content">
+    <div class="eyebrow center"><i class="fas fa-utensils"></i> Punjabi &middot; Chinese &middot; Continental</div>
+    <h1>Our Full Menu</h1>
+    <p>Three cuisines, one passion — to serve happiness on every plate. 100% pure vegetarian.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Menu</span></div>
+  </div>
+</section>
+
+<!-- ================= TOOLBAR ================= -->
+<div class="menu-toolbar">
+  <div class="container menu-toolbar-inner">
+    <div class="menu-search" id="menuSearchField">
+      <i class="fas fa-magnifying-glass"></i>
+      <input type="text" id="menuSearch" placeholder="Search for a dish, e.g. Paneer, Biryani, Naan...">
+      <button class="clear-btn" id="menuSearchClear" aria-label="Clear search" type="button"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="menu-chips" id="menuChips"></div>
+  </div>
+</div>
+
+<!-- ================= MENU BODY ================= -->
+<main class="section" style="padding-top: 3rem;">
+  <div class="container">
+    <p class="menu-note"><i class="fas fa-circle-info"></i> 5% extra GST applicable on all dishes. Prices are subject to change without prior notice.</p>
+
+    <div id="menuEmpty" class="menu-empty">
+      <i class="fas fa-utensils"></i>
+      <h3>No dishes found</h3>
+      <p>Try a different search term or clear the search box.</p>
+    </div>
+
+    <div class="menu-categories" id="menuCategories"></div>
+  </div>
+</main>
+
+<!-- ================= CTA BANNER ================= -->
+<section class="cta-banner">
+  <div class="container cta-inner">
+    <div>
+      <h2>Ready to Order?</h2>
+      <p>Get your favorite Nutan dishes delivered fresh and fast.</p>
+    </div>
+    <div class="cta-actions">
+      <button class="btn" data-open-order type="button"><i class="fas fa-motorcycle"></i> Order Online</button>
+      <a href="tel:+919408547530" class="btn btn-outline"><i class="fas fa-phone"></i> Call to Reserve</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="main-footer">
+  <div class="container footer-container">
+    <div class="footer-logo">
+      <a href="index.html"><img src="images/logo.jpg" alt="Nutan Restaurant logo"></a>
+      <div class="brand-name">Nutan Restaurant</div>
+      <p class="tagline">Taste Crafted with Tradition</p>
+    </div>
+    <div class="footer-menu">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Food Menu</a></li>
+        <li><a href="dishes.html"><i class="fas fa-chevron-right"></i> Popular Dishes</a></li>
+        <li><a href="meals.html"><i class="fas fa-chevron-right"></i> Best Seller Meals</a></li>
+        <li><a href="https://www.swiggy.com/city/ahmedabad/nutan-restaurant-lal-darwaja-rest126693" target="_blank" rel="noopener"><i class="fas fa-chevron-right"></i> Order on Swiggy</a></li>
+        <li><a href="https://www.zomato.com/ahmedabad/nutan-restaurant-lal-darwaja/order" target="_blank" rel="noopener"><i class="fas fa-chevron-right"></i> Order on Zomato</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/bgptWoajkh5ZkUCi7" target="_blank" rel="noopener">Shankar Chambers, Mirzapur Rd, Lal Darwaja, Ahmedabad, Gujarat 380001</a></p>
+      <p><i class="fas fa-phone"></i> <a href="tel:+919408547530">+91&nbsp;94085&nbsp;47530</a></p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:nutanrest@gmail.com">nutanrest@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; <span data-year>2026</span> Nutan Restaurant — Hand Crafted with ❤️</p>
+    <div class="social-icons">
+      <a href="#" class="social facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/nutanrestaurant/" class="social instagram" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="social pinterest" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+      <a href="https://wa.me/919408547530" class="social whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+
+<div class="float-stack">
+  <button class="float-btn totop" aria-label="Back to top" type="button"><i class="fas fa-arrow-up"></i></button>
+  <a href="https://wa.me/919408547530" class="float-btn whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<div class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close" type="button"><i class="fas fa-xmark"></i></button>
+    <h3>Order Online</h3>
+    <p>Choose your favorite platform to get Nutan Restaurant delivered to you.</p>
+    <div class="order-options">
+      <a class="order-option zomato" href="https://www.zomato.com/ahmedabad/nutan-restaurant-lal-darwaja/order" target="_blank" rel="noopener">
+        <span class="oi"><i class="fas fa-utensils"></i></span>
+        <span><strong>Order on Zomato</strong><span>Fast delivery to your doorstep</span></span>
+      </a>
+      <a class="order-option swiggy" href="https://www.swiggy.com/city/ahmedabad/nutan-restaurant-lal-darwaja-rest126693" target="_blank" rel="noopener">
+        <span class="oi"><i class="fas fa-bag-shopping"></i></span>
+        <span><strong>Order on Swiggy</strong><span>Track your order live</span></span>
+      </a>
+      <a class="order-option call" href="tel:+919408547530">
+        <span class="oi"><i class="fas fa-phone"></i></span>
+        <span><strong>Call to Order</strong><span>+91&nbsp;94085&nbsp;47530</span></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="data/menu-data.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
