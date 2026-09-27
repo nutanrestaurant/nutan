@@ -48,7 +48,10 @@
   --ease-out: cubic-bezier(.16,.84,.44,1);
   --ease-soft: cubic-bezier(.22,.61,.36,1);
 }
-
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 /* ---------- Reset ---------- */
 *, *::before, *::after{ box-sizing: border-box; }
 html{
